@@ -8,11 +8,12 @@ Assumption:
 You already have EKS cluster setup done.
 
 *steps:
-       1. Create test deployment and service on EKS.
-       2. Create SA for test user with read only view
-       3. Enable Audit log from AWS console
-       4. Monitor ser activities in cloudwatch ingsights 
-
+       
+ 1.  Create test deployment and service on EKS.
+ 2.  Create SA for test user with read only view
+ 3.  Enable Audit log from AWS console
+ 4.  Monitor ser activities in cloudwatch ingsights
+ 
 
 1. Create test deployment and service on EKS.
 
