@@ -15,7 +15,8 @@ You already have EKS cluster setup done.
  4.  Monitor ser activities in cloudwatch ingsights
  
 
-1. Create test deployment and service on EKS.
+
+**1. Create test deployment and service on EKS**
 
        # kubectl apply -f springboot-deployment.yaml 
        deployment.apps/springboot created
