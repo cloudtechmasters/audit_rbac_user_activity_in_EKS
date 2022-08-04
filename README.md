@@ -9,7 +9,7 @@ You already have EKS cluster setup done.
        
  1.  Create test deployment and service on EKS.
  2.  Create SA for test user with read only view
- 3.  Enable Audit log from AWS console
+ 3.  Test queries with test user kubeconfig
  4.  Enable Audit log from AWS console
  5.  Monitor service account activities in cloudwatch ingsights
  
@@ -101,7 +101,13 @@ Generate kubeconfig for Test user
                   token: eyJhbGciOiJSUzI1NiIsImtpZCI6IIpRyVSQIcGmA
 
 
-3. Enable Audit log from AWS console
+3. Test queries with test user kubeconfig
+
+              # export KUBECONFIG=/tmp/eks-test.yaml
+              
+              # k config get-contexts
+              CURRENT   NAME               CLUSTER   AUTHINFO       NAMESPACE
+              *         eksdemo--cluster   eksdemo   eksdemo-user 
 
              # kubectl get all
              NAME                             READY   STATUS    RESTARTS   AGE
