@@ -16,27 +16,27 @@ steps:
 
 1. Create test deployment and service on EKS.
 
-      # kubectl apply -f springboot-deployment.yaml 
-      deployment.apps/springboot created
+       # kubectl apply -f springboot-deployment.yaml 
+       deployment.apps/springboot created
       
-      # kubectl apply -f springboot-service.yaml 
-      service/springboot created
+       # kubectl apply -f springboot-service.yaml 
+       service/springboot created
       
-      # kubectl get all  <br /> 
-      NAME                             READY   STATUS    RESTARTS   AGE <br /> 
-      pod/springboot-db6684d7b-2p54w   1/1     Running   0          73m <br />
-      pod/springboot-db6684d7b-pw5fk   1/1     Running   0          73m <br />
-      pod/springboot-db6684d7b-znfd4   1/1     Running   0          73m <br />
+       # kubectl get all  <br /> 
+       NAME                             READY   STATUS    RESTARTS   AGE <br /> 
+       pod/springboot-db6684d7b-2p54w   1/1     Running   0          73m <br />
+       pod/springboot-db6684d7b-pw5fk   1/1     Running   0          73m <br />
+       pod/springboot-db6684d7b-znfd4   1/1     Running   0          73m <br />
       
-      NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP  <br />                                                              PORT(S)           AGE <br/>
-      service/kubernetes   ClusterIP      10.100.0.1       <none>                                                                    443/TCP           100m  <br />
-      service/springboot   LoadBalancer   10.100.148.110   a09c07ff01c804cfe9aa5c996541f6d6-1367374000.us-east-2.elb.amazonaws.com   33333:31563/TCP   72m   <br />
+       NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP  <br />                                                              PORT(S)           AGE <br/>
+       service/kubernetes   ClusterIP      10.100.0.1       <none>                                                                    443/TCP           100m  <br />
+       service/springboot   LoadBalancer   10.100.148.110   a09c07ff01c804cfe9aa5c996541f6d6-1367374000.us-east-2.elb.amazonaws.com   33333:31563/TCP   72m   <br />
       
-      NAME                         READY   UP-TO-DATE   AVAILABLE   AGE <br /> 
-      deployment.apps/springboot   3/3     3            3           73m
+       NAME                         READY   UP-TO-DATE   AVAILABLE   AGE <br /> 
+       deployment.apps/springboot   3/3     3            3           73m
       
-      NAME                                   DESIRED   CURRENT   READY   AGE <br />
-      replicaset.apps/springboot-db6684d7b   3         3         3       73m
+       NAME                                   DESIRED   CURRENT   READY   AGE <br />
+       replicaset.apps/springboot-db6684d7b   3         3         3       73m
      
 2. Create SA for test user with read only view
 
