@@ -28,9 +28,9 @@ steps:
       pod/springboot-db6684d7b-pw5fk   1/1     Running   0          73m <br />
       pod/springboot-db6684d7b-znfd4   1/1     Running   0          73m <br />
 
-      NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP  <br />                                                              PORT(S)           AGE
-      service/kubernetes   ClusterIP      10.100.0.1       <none>                                                                    443/TCP           100m
-      service/springboot   LoadBalancer   10.100.148.110   a09c07ff01c804cfe9aa5c996541f6d6-1367374000.us-east-2.elb.amazonaws.com   33333:31563/TCP   72m
+      NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP  <br />                                                              PORT(S)           AGE <br/>
+      service/kubernetes   ClusterIP      10.100.0.1       <none>                                                                    443/TCP           100m  <br />
+      service/springboot   LoadBalancer   10.100.148.110   a09c07ff01c804cfe9aa5c996541f6d6-1367374000.us-east-2.elb.amazonaws.com   33333:31563/TCP   72m   <br />
 
       NAME                         READY   UP-TO-DATE   AVAILABLE   AGE <br /> 
       deployment.apps/springboot   3/3     3            3           73m
