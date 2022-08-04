@@ -1,0 +1,37 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-view-role
+  namespace: utilities
+rules:
+- apiGroups: ["apps"]
+  resources:
+    # v1
+    - "controllerrevisions"
+    - "daemonsets"
+    - "daemonsets/status"
+    - "deployments"
+    - "deployments/scale"
+    - "deployments/status"
+    # v1beta2
+    # v1beta1
+    - "deployments/rollback"
+    - "pods"
+    # rbac.authorization.k8s.io/v1
+    - "rbac.authorization.k8s.io/v1"
+  verbs:
+    - "get"
+    - "list"
+    - "watch"
+- apiGroups: ["", "rbac.authorization.k8s.io"] # "" indicates the core API group
+  resources: ["*"]
+  verbs:
+    - "get"
+    - "list"
+    - "watch"
+- apiGroups:
+  - ""
+  resources:
+  - pods/portforward
+  verbs:
+  - create
