@@ -5,7 +5,7 @@ Assumption:
 
 You already have EKS cluster setup done.
 
-*steps:
+**Steps:**
        
  1.  Create test deployment and service on EKS.
  2.  Create SA for test user with read only view
