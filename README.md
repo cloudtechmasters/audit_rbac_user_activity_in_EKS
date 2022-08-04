@@ -1,7 +1,7 @@
 # audit_rbac_user_activity_in_EKS
 
-Audit Role Base Access Control (Service Account based) user activity in EKS
-============================================================================
+**Audit Role Base Access Control (Service Account based) user activity in EKS**
+
 
 Assumption:
 
@@ -42,38 +42,41 @@ You already have EKS cluster setup done.
      
 2. Create SA for test user with read only view
 
-    # kubectl create sa test
-    
-    service_account=test <br />
-    namespace=default <br />
-    eks_cluster_name=eksdemo <br />
-    secret_token_name=$(kubectl get serviceAccounts ${service_account} --namespace "${namespace_name}" -ojsonpath='{.secrets[0].name}') <br />
-    account_token=$(kubectl get secrets ${secret_token_name} --namespace "${namespace_name}" -ojsonpath='{.data.token}' | base64 -d) <br />
-    server=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.server}') <br />
-    certificate_authority_data=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.certificate-authority-data}') <br />
+       # kubectl create sa test
+        serviceaccount/test created
+
+        service_account=test
+        namespace=default
+        eks_cluster_name=eksdemo
+        secret_token_name=$(kubectl get serviceAccounts ${service_account} --namespace "${namespace_name}" -ojsonpath='{.secrets[0].name}')
+        account_token=$(kubectl get secrets ${secret_token_name} --namespace "${namespace_name}" -ojsonpath='{.data.token}' | base64 -d)
+        server=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.server}')
+        certificate_authority_data=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.certificate-authority-data}')
 
 
-    cat <<EOF > /tmp/eks-${service_account}.yaml
-    apiVersion: v1
-    clusters:
-    - cluster:
-        certificate-authority-data: ${certificate_authority_data}
-        server: ${server}
-      name: ${eks_cluster_name}
-    contexts:
-    - context:
-        cluster: ${eks_cluster_name}
-        user: ${eks_cluster_name}-user
-        namespace: ${namespace_name}
-      name: ${eks_cluster_name}-${namespace_name}-cluster
-    current-context: ${eks_cluster_name}-${namespace_name}-cluster
-    kind: Config
-    preferences: {}
-    users:
-    - name: ${eks_cluster_name}-user
-      user:
-        token: ${account_token}
-    EOF
+Generate kubeconfig for Test user
+
+            cat <<EOF > /tmp/eks-${service_account}-config.yaml
+            apiVersion: v1
+            clusters:
+            - cluster:
+                certificate-authority-data: ${certificate_authority_data}
+                server: ${server}
+              name: ${eks_cluster_name}
+            contexts:
+            - context:
+                cluster: ${eks_cluster_name}
+                user: ${eks_cluster_name}-user
+                namespace: ${namespace_name}
+              name: ${eks_cluster_name}-${namespace_name}-cluster
+            current-context: ${eks_cluster_name}-${namespace_name}-cluster
+            kind: Config
+            preferences: {}
+            users:
+            - name: ${eks_cluster_name}-user
+              user:
+                token: ${account_token}
+            EOF
 
     
     
