@@ -23,10 +23,10 @@ steps:
       service/springboot created
 
       # kubectl get all  <br /> 
-      NAME                             READY   STATUS    RESTARTS   AGE
-      pod/springboot-db6684d7b-2p54w   1/1     Running   0          73m
-      pod/springboot-db6684d7b-pw5fk   1/1     Running   0          73m
-      pod/springboot-db6684d7b-znfd4   1/1     Running   0          73m
+      NAME                             READY   STATUS    RESTARTS   AGE <br /> 
+      pod/springboot-db6684d7b-2p54w   1/1     Running   0          73m <br />
+      pod/springboot-db6684d7b-pw5fk   1/1     Running   0          73m <br />
+      pod/springboot-db6684d7b-znfd4   1/1     Running   0          73m <br />
 
       NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP  <br />                                                              PORT(S)           AGE
       service/kubernetes   ClusterIP      10.100.0.1       <none>                                                                    443/TCP           100m
