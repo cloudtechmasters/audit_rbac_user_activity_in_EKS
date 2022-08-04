@@ -1,5 +1,3 @@
-# audit_rbac_user_activity_in_EKS
-
 **Audit Role Base Access Control (Service Account based) user activity in EKS**
 
 
@@ -12,7 +10,8 @@ You already have EKS cluster setup done.
  1.  Create test deployment and service on EKS.
  2.  Create SA for test user with read only view
  3.  Enable Audit log from AWS console
- 4.  Monitor ser activities in cloudwatch ingsights
+ 4.  Enable Audit log from AWS console
+ 5.  Monitor service account activities in cloudwatch ingsights
  
 
 
@@ -79,7 +78,7 @@ Generate kubeconfig for Test user
             EOF
     
     
-# cat /tmp/eks-test.yaml 
+**# cat /tmp/eks-test.yaml** 
 
               apiVersion: v1
               clusters:
@@ -123,11 +122,13 @@ Generate kubeconfig for Test user
              Error from server (Forbidden): jobs.batch is forbidden: User "system:serviceaccount:default:test" cannot list resource "jobs" in API group "batch" in the namespace "default"
 
 
-4. Monitor ser activities in cloudwatch ingsights 
+4. Enable Audit log from AWS console 
 
 Goto EKS cluster --> Logging --> Manage Logging --> Enable Audit
 
 <img width="1481" alt="image" src="https://user-images.githubusercontent.com/68885738/182895565-82608e13-7932-4b20-82f3-eb3da194d558.png">
+
+5. Monitor service account activities in cloudwatch ingsights
 
 Once you enable the Audit, it will create the Log Group "/aws/eks/cluster-name/cluster" (replace cluster name with your cluster name.) 
 
