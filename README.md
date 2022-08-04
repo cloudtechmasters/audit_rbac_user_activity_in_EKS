@@ -42,13 +42,13 @@ steps:
 
     # kubectl create sa test
     
-    service_account=test
-    namespace=default
-    eks_cluster_name=eksdemo
-    secret_token_name=$(kubectl get serviceAccounts ${service_account} --namespace "${namespace_name}" -ojsonpath='{.secrets[0].name}')
-    account_token=$(kubectl get secrets ${secret_token_name} --namespace "${namespace_name}" -ojsonpath='{.data.token}' | base64 -d)
-    server=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.server}')
-    certificate_authority_data=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.certificate-authority-data}')
+    service_account=test <br />
+    namespace=default <br />
+    eks_cluster_name=eksdemo <br />
+    secret_token_name=$(kubectl get serviceAccounts ${service_account} --namespace "${namespace_name}" -ojsonpath='{.secrets[0].name}') <br />
+    account_token=$(kubectl get secrets ${secret_token_name} --namespace "${namespace_name}" -ojsonpath='{.data.token}' | base64 -d) <br />
+    server=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.server}') <br />
+    certificate_authority_data=$(kubectl config view --flatten --minify -ojsonpath='{.clusters[0].cluster.certificate-authority-data}') <br />
 
 
     cat <<EOF > /tmp/eks-${service_account}.yaml
