@@ -103,6 +103,11 @@ Generate kubeconfig for Test user
 
 3. Test queries with test user kubeconfig
 
+              # k config get-contexts
+                 CURRENT   NAME                                              CLUSTER                       AUTHINFO                                          NAMESPACE
+                 *         i-067e49e18150ff9fd@eksdemo.us-east-2.eksctl.io   eksdemo.us-east-2.eksctl.io   i-067e49e18150ff9fd@eksdemo.us-east-2.eksctl.io   
+
+
               # export KUBECONFIG=/tmp/eks-test.yaml
               
               # k config get-contexts
