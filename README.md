@@ -41,6 +41,8 @@ You already have EKS cluster setup done.
      
 2. Create SA for test user with read only view
 
+ We are creating a clusterrole which will have only read permission on obejcts in default namespace. (cluster view role)
+
        # kubectl create sa test
         serviceaccount/test created
 
